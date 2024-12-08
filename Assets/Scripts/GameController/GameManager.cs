@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] _ListPick; // Mảng lưu trữ danh sách vũ khí có thể chọn
-    GameControler _GameControler; // Đối tượng quản lý chính game
+    GameController _GameController; // Đối tượng quản lý chính game
     public LayerMask collisionMask; // Lớp mặt nạ để kiểm tra va chạm (raycast)
 
     // Hàm khởi tạo, chạy khi game bắt đầu
     void Start()
     {
         // Tìm và lưu đối tượng điều khiển game
-        _GameControler = FindObjectOfType<GameControler>();
+        _GameController = FindObjectOfType<GameController>();
     }
 
     // Update is called once per frame
@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
         GameObject[] arrPickOld = GameObject.FindGameObjectsWithTag("Pick");
         for (int i = 0; i < arrPickOld.Length; i++)
         {
-            Pick_ShieldControler pick = arrPickOld[i].GetComponent<Pick_ShieldControler>();
-            Pick_MineControler pickMine = arrPickOld[i].GetComponent<Pick_MineControler>();
+            Pick_ShieldController pick = arrPickOld[i].GetComponent<Pick_ShieldController>();
+            Pick_MineController pickMine = arrPickOld[i].GetComponent<Pick_MineController>();
             // Kiểm tra nếu vũ khí không phải loại "Pick_Shield" hay "Pick_Mine" thì xóa đối tượng
             if (pick == null && pickMine == null) Destroy(arrPickOld[i]);
             // Nếu là loại Pick_Mine, nhưng chưa được khởi tạo hoàn toàn thì cũng xóa
@@ -52,17 +52,17 @@ public class GameManager : MonoBehaviour
         Player player = new Player();
         Object obj = new Object();
 
-        // Lưu vũ khí được chọn vào biến _Pick của GameControler
-        _GameControler._Pick = _ListPick[index];
+        // Lưu vũ khí được chọn vào biến _Pick của GameController
+        _GameController._Pick = _ListPick[index];
 
         // Lấy đối tượng Player hiện tại (được chọn trong lượt của người chơi)
-        player = _GameControler._GameObj.GetComponent<Player>();
+        player = _GameController._GameObj.GetComponent<Player>();
 
         // Nếu vũ khí là các loại đặc biệt (bom, dịch chuyển, hồi máu, đổi chỗ) thì tạo đối tượng vũ khí đặc biệt
         if (index == 3 || index == 9 || index == 14 || index == 15)
         {
-            obj = Instantiate(_ListPick[18], _GameControler._GameObj.transform.position, Quaternion.identity);
-            AirCallControler air = ((GameObject)obj).GetComponent<AirCallControler>();
+            obj = Instantiate(_ListPick[18], _GameController._GameObj.transform.position, Quaternion.identity);
+            AirCallController air = ((GameObject)obj).GetComponent<AirCallController>();
             switch (index)
             {
                 case 3: air._Type = "Pick_Bomb"; break; // Bom
@@ -74,9 +74,9 @@ public class GameManager : MonoBehaviour
         else
         {
             // Nếu vũ khí không đặc biệt, tạo đối tượng vũ khí thông thường tại vị trí của Player
-            FindObjectOfType<CameraControler>()._IsMove = false;
-            FindObjectOfType<MapControler>()._IsMove = false;
-            obj = Instantiate(_ListPick[index], _GameControler._GameObj.transform.position, Quaternion.identity);
+            FindObjectOfType<CameraController>()._IsMove = false;
+            FindObjectOfType<MapController>()._IsMove = false;
+            obj = Instantiate(_ListPick[index], _GameController._GameObj.transform.position, Quaternion.identity);
         }
 
         // Điều chỉnh hướng của vũ khí theo hướng của người chơi
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Gắn đối tượng vũ khí vừa tạo vào đối tượng người chơi
-        ((GameObject)obj).transform.parent = _GameControler._GameObj.transform;
+        ((GameObject)obj).transform.parent = _GameController._GameObj.transform;
         // Hiển thị súng hoặc vũ khí trên người chơi
     }
     /// <summary>

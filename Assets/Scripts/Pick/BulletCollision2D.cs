@@ -14,7 +14,7 @@ public class BulletCollision2D : MonoBehaviour
     float xMax, xMin, yMin, yMax; // Biên giới màn chơi, dùng để xác định khi viên đạn đi ra khỏi màn.
     public bool _BulletFinish = false; // Kiểm tra xem đạn đã kết thúc nhiệm vụ chưa.
     public bool _CheckYMax = false; // Cờ kiểm tra khi đạn vượt quá yMax.
-    SoundControler _SoundControler; // Đối tượng để phát âm thanh.
+    SoundController _SoundController; // Đối tượng để phát âm thanh.
     Vector3 _PosStart; // Vị trí bắt đầu của viên đạn.
 
     // Use this for initialization
@@ -30,7 +30,7 @@ public class BulletCollision2D : MonoBehaviour
         yMax = other.transform.position.y + (other.GetComponent<BoxCollider2D>().size.y * other.transform.localScale.y) / 2;
 
         collider = gameObject.GetComponent<BoxCollider2D>(); // Lấy thành phần BoxCollider2D của viên đạn.
-        _SoundControler = FindObjectOfType<SoundControler>(); // Tìm đối tượng điều khiển âm thanh.
+        _SoundController = FindObjectOfType<SoundController>(); // Tìm đối tượng điều khiển âm thanh.
         _PosStart = gameObject.transform.position; // Lưu vị trí bắt đầu của viên đạn.
     }
 
@@ -79,11 +79,11 @@ public class BulletCollision2D : MonoBehaviour
             // Kiểm tra loại đạn và phát âm thanh tương ứng.
             if (dot.tag == "Explosion" || dot.tag == "Explosion_Bomp")
             {
-                _SoundControler.PlayExplosionSound(true); // Âm thanh vụ nổ.
+                _SoundController.PlayExplosionSound(true); // Âm thanh vụ nổ.
             }
             if (dot.tag == "Explosion_Poison")
             {
-                _SoundControler.PlayGlassSound(true); // Âm thanh chất độc.
+                _SoundController.PlayGlassSound(true); // Âm thanh chất độc.
             }
 
             // Tạo hiệu ứng va chạm tại vị trí đạn.
@@ -97,11 +97,11 @@ public class BulletCollision2D : MonoBehaviour
             // Phát âm thanh tương ứng dựa trên loại đạn.
             if (dot.tag == "Explosion" || dot.tag == "Explosion_Bomp")
             {
-                _SoundControler.PlayExplosionSound(true);
+                _SoundController.PlayExplosionSound(true);
             }
             if (dot.tag == "Explosion_Poison")
             {
-                _SoundControler.PlayGlassSound(true);
+                _SoundController.PlayGlassSound(true);
             }
 
             // Tạo hiệu ứng tại vị trí va chạm.
@@ -128,11 +128,11 @@ public class BulletCollision2D : MonoBehaviour
                 // Phát âm thanh dựa trên loại đạn.
                 if (dot.tag == "Explosion" || dot.tag == "Explosion_Bomp")
                 {
-                    _SoundControler.PlayExplosionSound(true);
+                    _SoundController.PlayExplosionSound(true);
                 }
                 if (dot.tag == "Explosion_Poison")
                 {
-                    _SoundControler.PlayGlassSound(true);
+                    _SoundController.PlayGlassSound(true);
                 }
 
                 // Tạo hiệu ứng vụ nổ tại điểm va chạm.
@@ -145,17 +145,17 @@ public class BulletCollision2D : MonoBehaviour
     // Hàm xử lý hành động sau khi va chạm được kích hoạt.
     private void CollionActive()
     {
-        GameControler gameControler = FindObjectOfType<GameControler>(); // Lấy đối tượng GameControler.
+        GameController gameController = FindObjectOfType<GameController>(); // Lấy đối tượng GameController.
 
         // Nếu _Turn không phải là lượt đầu tiên, di chuyển camera tới đối tượng.
         if (_Turn != 1)
         {
-            gameControler.MoveCameraToObj();
+            gameController.MoveCameraToObj();
         }
 
         // Nếu đạn đã hoàn thành và là lượt của nó, chuyển lượt.
-        if (!gameControler._GameState._IsChangding && _Turn == 1 && _BulletFinish)
-            gameControler.ChangeTurn();
+        if (!gameController._GameState._IsChangding && _Turn == 1 && _BulletFinish)
+            gameController.ChangeTurn();
 
         // Nếu _DestroyParent là true, phá hủy đối tượng cha, nếu không, phá hủy chính nó.
         if (_DestroyParent)

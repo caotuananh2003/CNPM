@@ -16,26 +16,26 @@ public class CannonScript : MonoBehaviour
 	private bool isPressed, isBallThrown; // Biến kiểm tra trạng thái
 	private float power = 5; // Biến lưu trữ lực bắn
 	private List<GameObject> trajectoryPoints; // Danh sách các điểm đường đi
-	GameControler _GameControler; // Tham chiếu đến GameControler
+	GameController _GameController; // Tham chiếu đến GameController
 	private float _scale = 0.1f; // Thay đổi kích thước cho các điểm đường đi
 	private Vector3 _posDown, _posUp; // Điểm bắt đầu và kết thúc kéo tay lấy lực
 	private Animator _anim; // Tham chiếu đến Animator để điều khiển hoạt ảnh
 	UIManager _UIManager; // Tham chiếu đến UIManager
-	SoundControler _SoundControler; // Tham chiếu đến SoundControler
+	SoundController _SoundController; // Tham chiếu đến SoundController
 
 	//---------------------------------------	
 	void Start()
 	{
 		// Khởi tạo danh sách điểm đường đi
 		trajectoryPoints = new List<GameObject>();
-		// Tìm và lưu GameControler
-		_GameControler = FindObjectOfType<GameControler>();
+		// Tìm và lưu GameController
+		_GameController = FindObjectOfType<GameController>();
 		// Tìm Animator trong con của đối tượng này
 		_anim = gameObject.GetComponentInChildren<Animator>();
 		// Tìm UIManager
 		_UIManager = FindObjectOfType<UIManager>();
-		// Tìm SoundControler
-		_SoundControler = FindObjectOfType<SoundControler>();
+		// Tìm SoundController
+		_SoundController = FindObjectOfType<SoundController>();
 		// Đặt trạng thái ban đầu
 		isPressed = isBallThrown = false;
 
@@ -53,12 +53,12 @@ public class CannonScript : MonoBehaviour
 	void Update()
 	{
 		// Kiểm tra trạng thái chơi và dừng xử lý nếu có bất kỳ điều kiện nào không phù hợp
-		if (_GameControler._CheckHit) return; // Nếu đã trúng mục tiêu thì không làm gì cả
+		if (_GameController._CheckHit) return; // Nếu đã trúng mục tiêu thì không làm gì cả
 
-		if (_GameControler._TypeGame == 0 && _GameControler._GameState._IsEnemyStart) return; // Nếu trò chơi bắt đầu với kẻ thù thì không làm gì cả
+		if (_GameController._TypeGame == 0 && _GameController._GameState._IsEnemyStart) return; // Nếu trò chơi bắt đầu với kẻ thù thì không làm gì cả
 
 		// Kiểm tra vị trí chuột so với đối tượng cần bắn
-		if ((Camera.main.ScreenToWorldPoint(Input.mousePosition).y < _GameControler.INood.transform.position.y || _UIManager._ListPopup[0].activeSelf) && !isPressed) return;
+		if ((Camera.main.ScreenToWorldPoint(Input.mousePosition).y < _GameController.INood.transform.position.y || _UIManager._ListPopup[0].activeSelf) && !isPressed) return;
 
 		// Nếu viên đạn đã được bắn, không xử lý tiếp
 		if (isBallThrown) return;
@@ -84,7 +84,7 @@ public class CannonScript : MonoBehaviour
 			// Tính toán vận tốc ban đầu từ vị trí chuột
 			Vector3 vel = GetForceFrom(Camera.main.ScreenToWorldPoint(Input.mousePosition), _posDown); // Vector vận tốc ban đầu
 			float angle = Mathf.Atan2(vel.y, vel.x) * Mathf.Rad2Deg; // Góc giữa vel và trục Ox
-			Player player = _GameControler._GameObj.GetComponent<Player>(); // Lấy tham chiếu đến Player
+			Player player = _GameController._GameObj.GetComponent<Player>(); // Lấy tham chiếu đến Player
 			angle += _Angle; // Cộng thêm góc sai khác vào góc
 
 			// Điều chỉnh góc dựa trên hướng của Player
@@ -111,7 +111,7 @@ public class CannonScript : MonoBehaviour
 	// Phương thức để bắn viên đạn
 	private void throwBall()
 	{
-		_SoundControler.PlayBazookaSound(true); // Phát âm thanh bắn
+		_SoundController.PlayBazookaSound(true); // Phát âm thanh bắn
 		_anim.Play("Bazooka"); // Chơi hoạt ảnh bắn
 		ball.SetActive(true); // Hiện viên đạn
 
@@ -122,8 +122,8 @@ public class CannonScript : MonoBehaviour
 		// Xóa các điểm chỉ dẫn
 		GameObject[] arrObj = GameObject.FindGameObjectsWithTag("Dot"); // Tìm tất cả các đối tượng có tag "Dot"
 		for (int i = 0; i < arrObj.Length; i++) Destroy(arrObj[i]); // Xóa từng đối tượng
-		_GameControler._CheckHit = true; // Đặt trạng thái kiểm tra va chạm
-		_GameControler._StopTime = true; // Dừng thời gian trò chơi
+		_GameController._CheckHit = true; // Đặt trạng thái kiểm tra va chạm
+		_GameController._StopTime = true; // Dừng thời gian trò chơi
 		_UIManager.ResetImgPick(); // Đặt lại hình ảnh trong UI
 	}
 
@@ -133,15 +133,15 @@ public class CannonScript : MonoBehaviour
 	/// </summary>
 	public void ThrowBallEnemy(Vector3 vel)
 	{
-		_SoundControler.PlayBazookaSound(true); // Phát âm thanh bắn
+		_SoundController.PlayBazookaSound(true); // Phát âm thanh bắn
 		if (!ball) createBall(); // Nếu chưa có viên đạn, tạo viên đạn
 		_anim.Play("Bazooka"); // Chơi hoạt ảnh bắn
 		ball.SetActive(true); // Hiện viên đạn
 
 		// Bắn viên đạn với lực truyền vào
 		ball.GetComponent<Rigidbody2D>().AddForce(vel, ForceMode2D.Impulse);
-		_GameControler._CheckHit = true; // Đặt trạng thái kiểm tra va chạm
-		_GameControler._StopTime = true; // Dừng thời gian trò chơi
+		_GameController._CheckHit = true; // Đặt trạng thái kiểm tra va chạm
+		_GameController._StopTime = true; // Dừng thời gian trò chơi
 		_UIManager.ResetImgPick(); // Đặt lại hình ảnh trong UI
 	}
 
