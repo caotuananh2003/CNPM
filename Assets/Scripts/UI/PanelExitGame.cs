@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PanelExitGame : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class PanelExitGame : MonoBehaviour {
 	}
     public void btnOke()
     {
+        Debug.Log("Exit game");
         _UIManager.ShowPanelStartGame();
         _UIManager.ShowPanelChoosePlayer();
         _UIManager.ShowPanelChooseMapAndNumPlayer();

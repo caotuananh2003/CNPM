@@ -27,12 +27,12 @@ public class GameController : MonoBehaviour
     MapController _mapController;
     NumberTextScale _numberText;
     GameManager _GameManager;
-    int _Timer = 30; // Bộ đếm thời gian cho lượt chơi
+    public int _Timer = 30; // Bộ đếm thời gian cho lượt chơi
     float _timeCount = 0; // Bộ đếm thời gian tính từng giây
     public int _NumberPlayer = 3; // Số lượng player
     public int _IndexMap = 1; // Chỉ số map hiện tại
     public bool _StopTime = false; // Biến điều khiển tạm dừng thời gian
-    public int _Gold = 0; // Lượng vàng hiện tại của người chơi
+    public int _Gold = 53; // Lượng vàng hiện tại của người chơi
 
     // Đối tượng âm thanh nền và âm thanh hiệu ứng
     BackgoundSoundController _BgController;

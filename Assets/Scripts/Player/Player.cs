@@ -12,7 +12,6 @@ public class Player : MonoBehaviour {
     public MovePlayer _MovePlayer;//Trạng thái di chuyển hiện tại
     public GameObject _Moving_Dust;//đối tượng sinh ra khi di chuyển
     public bool _IsPoison = false;//trạng thái trúng độc
-   
 
 	public float jumpHeight = 4;
 	public float timeToJumpApex = .4f;
@@ -31,10 +30,12 @@ public class Player : MonoBehaviour {
     float _TimeBlink = 0;
     Controller2D controller;
     SoundPlayerController _PlayerSound;
-    //enum State {Idle,Move,Jump,Blink,Hurt }//Lưu trữ trạng thái nhân vật
-    //public State _State=State.Idle;
+    public enum State { Idle, Move, Jump, Blink, Hurt }//Lưu trữ trạng thái nhân vật
+    public State _State = State.Idle;
     public enum Dir { left, right }//Hướng hiện tại của nhân vật
-    public  Dir _Dir = Dir.right;
+    public enum MovePlayer { None, MoveRight, MoveLeft, JumpRight, JumpLeft }
+
+    public Dir _Dir;
     float xMax, xMin, yMin;
 
 	void Start() {
@@ -42,7 +43,8 @@ public class Player : MonoBehaviour {
         _anim = gameObject.GetComponent<Animator>();
         _PlayerSound = FindObjectOfType<SoundPlayerController>();
         _MovePlayer = MovePlayer.None;
-		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+        _Dir = Dir.right;
+        gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         GameObject other = GameObject.FindGameObjectWithTag("Map_Front");
         xMax = other.transform.position.x + (other.GetComponent<BoxCollider2D>().size.x * other.transform.localScale.x)/2;
@@ -83,7 +85,7 @@ public class Player : MonoBehaviour {
                 _Moving_Dust.SetActive(true);
                 input.x = -1;
             }
-            if (_MovePlayer == MovePlayer.MoveRigh)
+            if (_MovePlayer == MovePlayer.MoveRight)
             {
                 Destroy(GameObject.FindGameObjectWithTag("MyTurn"));
                 if (gameObject.tag == "Player") _anim.Play("Player_Move"); else _anim.Play("Enemy_Move");
@@ -119,6 +121,7 @@ public class Player : MonoBehaviour {
                 //if (velocity.x != 0 || input.y != 0 || input.x != 0) Destroy(GameObject.FindGameObjectWithTag("MyTurn"));
             }
         }
+
 		float targetVelocityX = input.x * moveSpeed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 		velocity.y += gravity * Time.deltaTime;
@@ -143,24 +146,30 @@ public class Player : MonoBehaviour {
                 _Dir = Dir.left;
             }
         }
-     
+    
 		controller.Move (velocity * Time.deltaTime);
         //===========
-        if (CheckDie())
+        if (CheckDie()) // Kiểm tra xem player có chết hay không
         {
-            Player player = gameObject.GetComponent<Player>();
+            Player player = gameObject.GetComponent<Player>(); // Lấy component Player của đối tượng hiện tại
+
+            // Kiểm tra nếu player này là đối tượng hiện tại đang được điều khiển
             if (player._IsCurrent)
             {
-                GameController gameCOntroler = FindObjectOfType<GameController>();
-                if (!gameCOntroler._GameState._IsChangding)
+                // Tìm đối tượng GameController trong scene
+                GameController gameController = FindObjectOfType<GameController>();
+
+                // Kiểm tra nếu trạng thái trò chơi không phải là đang thay đổi lượt chơi
+                if (!gameController._GameState._IsChangding)
                 {
-                     gameCOntroler.ChangeTurn();
+                    gameController.ChangeTurn(); // Gọi phương thức để chuyển lượt chơi sang đối thủ
                 }
             }
-            Destroy(gameObject);
+
+            Destroy(gameObject); // Hủy đối tượng player này khỏi scene
         }
 
-	}
+    }
 
     /// <summary>
     /// Quay phải nhân vật
@@ -173,6 +182,17 @@ public class Player : MonoBehaviour {
         _Dir = Dir.right;
         velocity.x = 0;
     }
+
+    // Hàm này tự viết thêm.
+    public void RotateLeft()
+    {
+        gameObject.transform.localScale = new Vector3(-1, 1, 1);
+        GameObject obj = FinObjectChildByName(gameObject, "numbers_frame");
+        if (obj != null) obj.transform.localScale = new Vector3(-1, 1, 1);
+        _Dir = Dir.left;
+        velocity.x = 0;
+    }
+
     private bool CheckDie()
     {
         if (_Health<=0) return true;
@@ -328,5 +348,5 @@ public class Player : MonoBehaviour {
         }
     }
     //=========
-    public enum MovePlayer { None,MoveRigh,MoveLeft,JumpRight,JumpLeft}
-}
+   
+    }

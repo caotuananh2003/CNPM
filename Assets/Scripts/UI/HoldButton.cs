@@ -3,8 +3,6 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-
-
 public class HoldButton : MonoBehaviour, IEventSystemHandler
 {
     GameController _GameController;
@@ -22,7 +20,7 @@ public class HoldButton : MonoBehaviour, IEventSystemHandler
         if (_GameController._GameObj.tag == "Enemy" && _GameController._TypeGame == 0) return;
         _SoundController.PlayClickSound(true);
         Player player = _GameController._GameObj.GetComponent<Player>();
-        player._MovePlayer = Player.MovePlayer.MoveRigh;
+        player._MovePlayer = Player.MovePlayer.MoveRight;
     }
     public void MoveRight_Off(BaseEventData eventData)
     {

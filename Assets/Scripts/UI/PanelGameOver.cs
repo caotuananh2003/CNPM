@@ -12,6 +12,7 @@ public class PanelGameOver : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _GameController = FindObjectOfType<GameController>();
+        _UIManager = FindObjectOfType<UIManager>();
 	}
     public void SetPopup(int _Team)
     {

@@ -646,9 +646,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -799,9 +799,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1006,9 +1006,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ShowPopupPick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1764,7 +1764,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 190310241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b8e88033b765c841b098e66edc9a308, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bac6aef2e4f8d34bb254587910a95b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &190310244
@@ -1975,7 +1975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &210613713
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2239,7 +2239,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 257449121}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11415344, guid: 19c97c3f59a884c429cd9c220ce2d9ce, type: 3}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: RotateLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &257449121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2295,9 +2307,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 40378328}
+          m_TargetAssemblyTypeName: HoldButton, Assembly-CSharp
+          m_MethodName: MoveLeft_On
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2311,9 +2323,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 40378328}
+          m_TargetAssemblyTypeName: HoldButton, Assembly-CSharp
+          m_MethodName: MoveLeft_Off
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2597,9 +2609,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3444,7 +3456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &468932189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3681,7 +3693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &491375622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3926,9 +3938,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 515937135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c7fadcbc70e424e87d5005702665c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f6e1db87a3ad5f43a18077a91c3d36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _imgTeam:
+  - {fileID: 113541039}
+  - {fileID: 420883015}
+  _imgMedal:
+  - {fileID: 56068777}
+  - {fileID: 1226519120}
+  - {fileID: 122880961}
+  _SpriteMedal:
+  - {fileID: 21300000, guid: c842f5fb1b0577c4c97d5b6ae0f19d97, type: 3}
+  - {fileID: 21300000, guid: 64d98f28246b13640831c97eddddcb0f, type: 3}
 --- !u!1 &522396669
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,9 +4034,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4154,6 +4176,7 @@ MonoBehaviour:
   _TypeGame: 1
   _CheckHit: 0
   _Level: 1
+  _Timer: 60
   _NumberPlayer: 3
   _IndexMap: 1
   _StopTime: 0
@@ -4483,9 +4506,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4823,9 +4846,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5247,7 +5270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 632262642}
   - component: {fileID: 632262644}
-  - component: {fileID: 632262643}
+  - component: {fileID: 632262645}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5270,21 +5293,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1956990011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &632262643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 632262641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e9f286423d03904bb17082be4934106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EffectUrl:
-  - {fileID: 8300000, guid: 44c8c8b3edf45b7458b9cf269a84a6fd, type: 3}
-  - {fileID: 8300000, guid: b7dc56339035cd54c8d3e3bf3c92f2b1, type: 3}
 --- !u!82 &632262644
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5471,6 +5479,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &632262645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632262641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37cb813508171db449f25149b664f3ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectUrl:
+  - {fileID: 8300000, guid: 44c8c8b3edf45b7458b9cf269a84a6fd, type: 3}
+  - {fileID: 8300000, guid: b7dc56339035cd54c8d3e3bf3c92f2b1, type: 3}
 --- !u!1 &664073430
 GameObject:
   m_ObjectHideFlags: 0
@@ -6181,7 +6204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720396759}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11415344, guid: 19c97c3f59a884c429cd9c220ce2d9ce, type: 3}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: RotateRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &720396759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6237,9 +6272,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 40378328}
+          m_TargetAssemblyTypeName: HoldButton, Assembly-CSharp
+          m_MethodName: JumpRight_On
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6409,7 +6444,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 759015503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11415344, guid: 19c97c3f59a884c429cd9c220ce2d9ce, type: 3}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: RotateRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &759015503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6465,9 +6512,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 40378328}
+          m_TargetAssemblyTypeName: HoldButton, Assembly-CSharp
+          m_MethodName: MoveRight_On
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6481,9 +6528,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 40378328}
+          m_TargetAssemblyTypeName: HoldButton, Assembly-CSharp
+          m_MethodName: MoveRight_Off
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7252,9 +7299,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7517,9 +7564,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9075,9 +9122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9620,9 +9667,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11562,7 +11609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1466222790
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11982,9 +12029,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12379,9 +12426,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12511,9 +12558,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12764,9 +12811,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13026,7 +13073,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1661908229}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11415344, guid: 19c97c3f59a884c429cd9c220ce2d9ce, type: 3}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: RotateLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1661908229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13082,9 +13141,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 40378328}
+          m_TargetAssemblyTypeName: HoldButton, Assembly-CSharp
+          m_MethodName: JumpLeft_On
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -13176,9 +13235,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13537,9 +13596,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13810,7 +13869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1751731677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14710,7 +14769,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 190310243}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: PanelExitGame, Assembly-CSharp
         m_MethodName: btnNo
         m_Mode: 1
         m_Arguments:
@@ -14842,9 +14901,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15980,9 +16039,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f5281a031a2fada48bafdd0ee2ed3703, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 40378329}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChoosePick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16537,9 +16596,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 99b5fa25ef31d344db64fdbc99a5a12f, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 532916109}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: btnTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

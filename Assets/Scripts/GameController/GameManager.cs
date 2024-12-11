@@ -49,8 +49,11 @@ public class GameManager : MonoBehaviour
 
         //======================
         // Bắt đầu xử lý việc chọn vũ khí cho người chơi
-        Player player = new Player();
-        Object obj = new Object();
+        //Player player = new Player();
+        //Object obj = new Object();
+
+        Player player;
+        Object obj;
 
         // Lưu vũ khí được chọn vào biến _Pick của GameController
         _GameController._Pick = _ListPick[index];

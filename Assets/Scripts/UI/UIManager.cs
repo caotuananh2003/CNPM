@@ -78,24 +78,39 @@ public class UIManager : MonoBehaviour {
     /// </summary>
     public void LoadDataPopupPick()
     {
-        if (_GameController._GameObj.tag=="Player")
+        if (_GameController._GameObj.tag=="Player") // Kiểm tra nếu đối tượng game hiện tại là "Player"
         {
-            if (_GameController._ListStatePickPlayer[0].State) _ListImgButtonPopupPick[0].sprite = _ListSpriteImgButtonPopupPick[0]; else _ListImgButtonPopupPick[0].sprite = _ListSpriteImgButtonPopupPick[1];
-            if (_GameController._ListStatePickPlayer[1].State) _ListImgButtonPopupPick[1].sprite = _ListSpriteImgButtonPopupPick[2]; else _ListImgButtonPopupPick[1].sprite = _ListSpriteImgButtonPopupPick[3];
-            if (_GameController._ListStatePickPlayer[2].State) _ListImgButtonPopupPick[2].sprite = _ListSpriteImgButtonPopupPick[4]; else _ListImgButtonPopupPick[2].sprite = _ListSpriteImgButtonPopupPick[5];
-            if (_GameController._ListStatePickPlayer[3].State)
-                if (_GameController._ListStatePickPlayer[3].Ammo > 0)
-                {
-                    _ListImgButtonPopupPick[3].sprite = _ListSpriteImgButtonPopupPick[6];
-                    _ListImgAmmo[3].enabled = true;
-                }
-                else
-                {
-                    _GameController._ListStatePickPlayer[3].State = false;
-                    _ListImgButtonPopupPick[3].sprite = _ListSpriteImgButtonPopupPick[7];
-                    _ListImgAmmo[3].enabled = false;
-                }
+            // Kiểm tra trạng thái và cập nhật sprite (hình ảnh) cho từng nút trong popup tương ứng với từng người chơi
+            if (_GameController._ListStatePickPlayer[0].State)
+                _ListImgButtonPopupPick[0].sprite = _ListSpriteImgButtonPopupPick[0]; // Nếu trạng thái là true, dùng sprite ở vị trí 0
             else
+                _ListImgButtonPopupPick[0].sprite = _ListSpriteImgButtonPopupPick[1]; // Nếu trạng thái là false, dùng sprite ở vị trí 1
+
+            if (_GameController._ListStatePickPlayer[1].State)
+                _ListImgButtonPopupPick[1].sprite = _ListSpriteImgButtonPopupPick[2];
+            else
+                _ListImgButtonPopupPick[1].sprite = _ListSpriteImgButtonPopupPick[3];
+
+            if (_GameController._ListStatePickPlayer[2].State)
+                _ListImgButtonPopupPick[2].sprite = _ListSpriteImgButtonPopupPick[4];
+            else
+                _ListImgButtonPopupPick[2].sprite = _ListSpriteImgButtonPopupPick[5];
+
+            // Kiểm tra trạng thái và số lượng đạn của người chơi thứ 3
+            if (_GameController._ListStatePickPlayer[3].State)
+                if (_GameController._ListStatePickPlayer[3].Ammo > 0) // Nếu người chơi có đạn
+                {
+                    _ListImgButtonPopupPick[3].sprite = _ListSpriteImgButtonPopupPick[6]; // Cập nhật sprite tương ứng
+                    _ListImgAmmo[3].enabled = true; // Hiển thị hình ảnh biểu tượng đạn
+                }
+                else // Nếu người chơi không có đạn
+                {
+                    _GameController._ListStatePickPlayer[3].State = false; // Cập nhật trạng thái thành false
+                    _ListImgButtonPopupPick[3].sprite = _ListSpriteImgButtonPopupPick[7]; // Cập nhật sprite tương ứng
+                    _ListImgAmmo[3].enabled = false; // Ẩn biểu tượng đạn
+                }
+
+            else // Nếu trạng thái của người chơi thứ 3 là false
             {
                 _ListImgButtonPopupPick[3].sprite = _ListSpriteImgButtonPopupPick[7];
                 _ListImgAmmo[3].enabled = false;
@@ -551,7 +566,8 @@ public class UIManager : MonoBehaviour {
     public void LoadStatePickEnemy()
     {
         string strPick = ReadWriteFileText.GetStringFromPrefab(Data._LinkPic);
-        if (strPick == "") strPick = "1*1*1*0*1*0*0*0*1*0*0*1*0*0*0*1*0*0";
+        if (strPick == "") strPick = "1*1*1*1*1*1*1*1*1*1*1*1*1*1*1*1*1*1";
+                
         string[] arrPick = strPick.Split('*');
         string[] arrAmmo = Data._LinkAmmo.Split('*');
         _GameController._ListStatePickEnemy = new Pick[arrPick.Length];
@@ -568,7 +584,7 @@ public class UIManager : MonoBehaviour {
     public void LoadStatePickPlayer()
     {
         string strPick = ReadWriteFileText.GetStringFromPrefab(Data._LinkPic);
-        if (strPick=="") strPick = "1*1*1*0*1*0*0*0*1*0*0*1*0*0*0*1*0*0";
+        if (strPick == "") strPick = "1*1*1*1*1*1*1*1*1*1*1*1*1*1*1*1*1*1";
         string[] arrPick = strPick.Split('*');
         string[] arrAmmo = Data._LinkAmmo.Split('*');
         _GameController._ListStatePickPlayer = new Pick[arrPick.Length];
@@ -582,38 +598,70 @@ public class UIManager : MonoBehaviour {
     /// <summary>
     /// Thực hiện mở khóa pick
     /// </summary>
+    /// 
+    // Đoạn mã mới 
     public void UnlockPick()
     {
-        string strPick = "1*1*1*0*1*0*0*0*1*0*0*1*0*0*0*1*0*0";
+        string strPick = "1*1*1*1*1*1*1*1*1*1*1*1*1*1*1*1*1*1";
         ReadWriteFileText.SaveStringToPrefab(Data._LinkPic, strPick);
     }
+
+    // // Đoạn mã cũ
+    //public void UnlockPick()
+    //{
+    //    string strPick = "1*1*1*0*1*0*0*0*1*0*0*1*0*0*0*1*0*0";
+    //    ReadWriteFileText.SaveStringToPrefab(Data._LinkPic, strPick);
+    //}
     /// <summary>
     /// Chọn súng trên bảng hiển thị
     /// </summary>
     public void ChoosePick(int index)
     {
-        if (_GameController._GameObj.tag=="Player")
+        // Kiểm tra nếu đối tượng game hiện tại là "Player"
+        if (_GameController._GameObj.tag == "Player")
         {
+            // Nếu vật phẩm (pick) tại vị trí `index` không khả dụng, thoát khỏi hàm
             if (!_GameController._ListStatePickPlayer[index].State) return;
         }
         else
         {
-            if(!_GameController._ListStatePickEnemy[index].State) return;
+            // Nếu đối tượng không phải "Player", kiểm tra vật phẩm của "Enemy"
+            // Nếu vật phẩm tại vị trí `index` không khả dụng, thoát khỏi hàm
+            if (!_GameController._ListStatePickEnemy[index].State) return;
         }
         //==============
+        // Phát âm thanh khi người chơi chọn vật phẩm (click)
         _SoundController.PlayClickSound(true);
+
+        // Cập nhật hình ảnh của vật phẩm được chọn
+        // Sử dụng sprite tương ứng từ danh sách `_ListSpriteImgButtonPopupPick`
         _ListImgChoosePick[0].sprite = _ListSpriteImgButtonPopupPick[index * 2];
-        if (index == 0) {
+
+        // Nếu vật phẩm được chọn là vật phẩm đầu tiên (index == 0) (Lựu đạn)
+        if (index == 0)
+        {
+            // Gán sprite cho hình ảnh phụ (biểu tượng mô tả) của vật phẩm (Biểu tượng lựu đạn)
             _ListImgChoosePick[1].sprite = _ListPickSprite[2];
+            // Hiển thị đoạn text mô tả (ví dụ: trạng thái hoặc hướng dẫn sử dụng) (Hiển thị số)
             _ListText[1].SetActive(true);
         }
         else
         {
+            // Gán sprite khác cho hình ảnh phụ nếu không phải vật phẩm đầu tiên (Hiển thị nút clear)
             _ListImgChoosePick[1].sprite = _ListPickSprite[3];
+            // Ẩn đoạn text mô tả do không có thời gian nổ để chọn.
             _ListText[1].SetActive(false);
         }
+
+        // Thực hiện hành động sử dụng vật phẩm
+        // Hàm `UsePick` được gọi từ `_GameManager` với chỉ số vật phẩm `index`
         _GameManager.UsePick(index);
+
+        // Ẩn popup chứa danh sách vật phẩm
         HidePopupPick();
+
+        // Hủy đối tượng có tag "MyTurn"
+        // Đây có thể là một hiệu ứng hoặc đối tượng thông báo lượt chơi của người chơi
         Destroy(GameObject.FindGameObjectWithTag("MyTurn"));
     }
     /// <summary>

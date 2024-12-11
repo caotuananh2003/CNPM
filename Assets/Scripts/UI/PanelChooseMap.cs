@@ -148,26 +148,30 @@ public class PanelChooseMap : MonoBehaviour {
         _NumberText.SetNumText3(_GameController._Gold, _ListNumCoin);
 
         // Xác định giới hạn bản đồ có thể chọn dựa trên số vàng
-        if (_GameController._Gold >= 100)
-        {
-            _IndexMapMax = 6;
-        }
-        else if (_GameController._Gold >= 50)
-        {
-            _IndexMapMax = 5;
-        }
-        else if (_GameController._Gold >= 25)
-        {
-            _IndexMapMax = 4;
-        }
-        else if (_GameController._Gold >= 10)
-        {
-            _IndexMapMax = 3;
-        }
-        else
-        {
-            _IndexMapMax = 2;
-        }
+        // // Đoạn code cũ
+        //if (_GameController._Gold >= 100)
+        //{
+        //    _IndexMapMax = 6;
+        //}
+        //else if (_GameController._Gold >= 50)
+        //{
+        //    _IndexMapMax = 5;
+        //}
+        //else if (_GameController._Gold >= 25)
+        //{
+        //    _IndexMapMax = 4;
+        //}
+        //else if (_GameController._Gold >= 10)
+        //{
+        //    _IndexMapMax = 3;
+        //}
+        //else
+        //{
+        //    _IndexMapMax = 2;
+        //}
+
+        // Đoạn code mới để load tất cả các map
+        _IndexMapMax = 6;
     }
 
     /// <summary>

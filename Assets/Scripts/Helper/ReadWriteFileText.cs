@@ -72,27 +72,27 @@ public class ReadWriteFileText
         // - Nếu file không tồn tại, tạo file mới và ghi nội dung mặc định vào
 
         // Gợi ý cách sử dụng IsolatedStorageFile để quản lý file:
-        // IsolatedStorageFile isoStore = IsolatedStorageFile.GetStore(IsolatedStorageScope.User | IsolatedStorageScope.Assembly, null, null);
-        // if (isoStore.GetFileNames(fileName).Length > 0)
-        // {
-        //     using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(fileName, FileMode.Create, isoStore))
-        //     {
-        //         using (StreamWriter writer = new StreamWriter(isoStream))
-        //         {
-        //             writer.WriteLine(Content);
-        //         }
-        //     }
-        // }
-        // else
-        // {
-        //     using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(fileName, FileMode.CreateNew, isoStore))
-        //     {
-        //         using (StreamWriter writer = new StreamWriter(isoStream))
-        //         {
-        //             writer.WriteLine(Content);
-        //         }
-        //     }
-        // }
+        IsolatedStorageFile isoStore = IsolatedStorageFile.GetStore(IsolatedStorageScope.User | IsolatedStorageScope.Assembly, null, null);
+        if (isoStore.GetFileNames(fileName).Length > 0)
+        {
+            using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(fileName, FileMode.Create, isoStore))
+            {
+                using (StreamWriter writer = new StreamWriter(isoStream))
+                {
+                    writer.WriteLine(Content);
+                }
+            }
+        }
+        else
+        {
+            using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(fileName, FileMode.CreateNew, isoStore))
+            {
+                using (StreamWriter writer = new StreamWriter(isoStream))
+                {
+                    writer.WriteLine(Content);
+                }
+            }
+        }
     }
 
     // Hàm đọc nội dung từ file trong IsolatedStorage (phần cài đặt bị comment)
@@ -104,17 +104,17 @@ public class ReadWriteFileText
         // - Mở file trong IsolatedStorage và đọc nội dung
         // - Trả về chuỗi chứa nội dung file
 
-        // IsolatedStorageFile isoStore = IsolatedStorageFile.GetStore(IsolatedStorageScope.User | IsolatedStorageScope.Assembly, null, null);
-        // if (isoStore.GetFileNames(fileName).Length > 0)
-        // {
-        //     using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(fileName, FileMode.Open, isoStore))
-        //     {
-        //         using (StreamReader reader = new StreamReader(isoStream))
-        //         {
-        //             str = reader.ReadToEnd();
-        //         }
-        //     }
-        // }
+        IsolatedStorageFile isoStore = IsolatedStorageFile.GetStore(IsolatedStorageScope.User | IsolatedStorageScope.Assembly, null, null);
+        if (isoStore.GetFileNames(fileName).Length > 0)
+        {
+            using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(fileName, FileMode.Open, isoStore))
+            {
+                using (StreamReader reader = new StreamReader(isoStream))
+                {
+                    str = reader.ReadToEnd();
+                }
+            }
+        }
         return str; // Trả về chuỗi rỗng (do phần cài đặt bị bỏ qua)
     }
 

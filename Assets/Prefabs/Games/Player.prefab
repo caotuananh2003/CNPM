@@ -113,7 +113,6 @@ GameObject:
   - component: {fileID: 9577864}
   - component: {fileID: 6114090}
   - component: {fileID: 11415344}
-  - component: {fileID: 11445742}
   - component: {fileID: 11492194}
   - component: {fileID: 11474024}
   m_Layer: 0
@@ -133,7 +132,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.02, y: -0.61, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 454684}
@@ -282,19 +281,8 @@ MonoBehaviour:
   timeToJumpApex: 0.7
   moveSpeed: 0.8
   _isCollectBullet: 0
-  _Dir: 1
---- !u!114 &11445742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8804df911a1d2ba4a812e57cc72bf082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _State: 0
+  _Dir: 0
 --- !u!114 &11492194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +445,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 22499840}
